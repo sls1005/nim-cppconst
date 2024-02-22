@@ -10,8 +10,11 @@ const int* const* foo() {
 
 proc foo(): ptr CConst[ptr CConst[cint]] {.importcpp: "$1(@)".}
 
-var p1 = foo()
-doAssert not p1.isNil()
-var p2 = p1.derefAsNonConst()
-doAssert not p2.isNil()
-doAssert p2.derefAsNonConst() == 1
+proc main =
+  var p1 = foo()
+  doAssert not p1.isNil()
+  var p2 = p1.derefAsNonConst()
+  doAssert not p2.isNil()
+  doAssert p2.derefAsNonConst() == 1
+
+main()

@@ -7,8 +7,11 @@ extern "C" const int* foo() {
 }
 """.}
 
-proc foo(): ptr CConst[cint] {.importc.}
+proc foo(): ptr CConst[cint] {.importc, noconv.}
 
-var p = foo()
-doAssert not p.isNil()
-doAssert p.derefAsNonConst() == 1
+proc main =
+  var p = foo()
+  doAssert not p.isNil()
+  doAssert p.derefAsNonConst() == 1
+
+main()
