@@ -1,7 +1,7 @@
 import cppconst
 
 {.emit: """
-const char* s1 = "abc";
+const char * s1 = "abc";
 """.}
 var s1 {.importc.}: ptr CConst[cchar]
 

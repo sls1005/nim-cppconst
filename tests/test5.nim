@@ -2,7 +2,7 @@ import cppconst
 
 {.emit: """
 const int x = 1;
-extern "C" const int* foo() {
+extern "C" const int * foo() {
     return &x;
 }
 """.}

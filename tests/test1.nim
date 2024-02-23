@@ -1,9 +1,9 @@
 import cppconst
 
 {.emit: """
-int x = 1;
-int* p = &x;
-const int* const* foo() {
+const int x = 1;
+const int * p = &x;
+const int * const * foo() {
     return &p;
 }
 """.}
