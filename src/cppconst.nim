@@ -38,7 +38,7 @@ proc toPtrToCConstCharImpl(s: cstring): ptr CConst[cchar]
 proc derefAsNonConst*[T](p: ptr CConst[T]): T  {.importcpp: "(('0)(*(#)))", noconv, nodecl, raises: [].}
   ## This is **unsafe** as it dereferences a pointer.
   ##
-  ## `[]` should not be used instead of this. (Nor is it possible.)
+  ## `[]` should not be used instead of this.
   ##
   ## The argument must not be `nil`, or a segmentation fault can happen at the runtime.
 
