@@ -14,6 +14,8 @@ type CConst*[T] {.importcpp: "std::add_const<'0>::type", header: "<type_traits>"
   ##   var p: ptr CConst[cint]
   ##
   ## **Note:** A `const char*` is a `ptr CConst[cchar]` (non-const pointer to const char), not `CConst[ptr cchar]` (const pointer to non-const char, represented as `char * const` in C++) nor `CConst[cstring]` (`char * const`).
+   # This is POD when `T` is POD, otherwise it is not.
+   # It's marked as `{.cppNonPod.}` because it possibly is.
 
 {.push importcpp: "(const_cast<'0>(#))", noconv, nodecl, raises: [].}
 # `const_cast` is used here as a fail-safe mechanism. If the input type weren't compatible with the (underlying) return type, the code wouldn't even pass the C++ compilation.
