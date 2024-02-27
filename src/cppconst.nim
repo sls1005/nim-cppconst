@@ -21,12 +21,12 @@ type CConst*[T] {.importcpp: "std::add_const<'0>::type", header: "<type_traits>"
 # `const_cast` is used here as a fail-safe mechanism. If the input type weren't compatible with the (underlying) return type, the code wouldn't even pass the C++ compilation.
 
 proc toPtrToNonConst*[T](p: ptr CConst[T]): ptr T
-  ## This is **unsafe** as it discards the const qualifier.
+  ## This is **unsafe** as it discards the C++ const qualifier.
   ##
   ## The value pointed to by a pointer returned by this should not be assigned to, unless it is provably safe to do so, or a segmentation fault, or something worse, can happen at the runtime.
 
 proc toCString*(p: ptr CConst[cchar]): cstring
-  ## This is **unsafe** as it discards the const qualifier.
+  ## This is **unsafe** as it discards the C++ const qualifier.
   ##
   ## Any character pointed to by a `cstring` returned by this should not be assigned to, unless it is provably safe to do so, or a segmentation fault, or something worse, can happen at the runtime.
 
