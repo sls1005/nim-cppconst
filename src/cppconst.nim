@@ -5,7 +5,7 @@ type CConst*[T] {.importcpp: "std::add_const<'0>::type", header: "<type_traits>"
   ## This can not be normally instantiated. It is NOT intended to be used directly as the type of a variable, but to be used to form a more complex type (usually a pointer).
   ## For example, `ptr CConst[cchar]` is corresponding to `const char*` (non-const pointer to a const char) in C++.
   ##
-  ## A variable whose type is in the form `CConst[T]`, where `T` can be any type, will (probably) cause an error at the C++ compile-time. (But it can be of the type `ptr CConst[T]`.) The same applies to return types of procedures.
+  ## A variable whose type is in the form `CConst[T]`, where `T` can be any type, will (probably) cause an error at the C++ compile-time. (But it can be of the type `ptr CConst[T]`.) The same applies to return types and parameters of procedures.
   ##
   ## **Example:**
   ##
