@@ -25,6 +25,6 @@ doAssert p.derefAsNonConst() == 1
 
 + Normally, this is not required when wrapping a C/C++ function with a parameter that uses const qualifiers, nor is it required when wrapping a constant or a function that returns a constant. The only situation where this is possibly required is when wrapping a C/C++ pointer-to-const or a function that returns a pointer-to-const.
 
-+ The type `CConst` cannot be normally instantiated or used as a parameter type or return type. Only the pointer forms (`ptr CConst[T]`, `ptr ptr CConst[T]`, `ptr CConst[ptr T]`, `ptr CConst[ptr CConst[T]]`, ...) can; the outmost level must not be `CConst` (or `CConst[ptr]`).
++ The type `CConst` cannot be normally instantiated or used as a parameter type or return type. Only the pointers can. Such as `ptr CConst[T]` (corresponding to C++ `const T*`), `ptr ptr CConst[T]` (`const T**`), `ptr CConst[ptr T]` (`T * const*`), `ptr CConst[ptr CConst[T]]` (`const T * const*`); the outmost level must not be `CConst` (or `CConst[ptr]`).
 
 + The recommend (though not required) version of the compiler to be used with this is 1.2.0 or later. The backend C++ compiler has to at least support C++11 or later.
