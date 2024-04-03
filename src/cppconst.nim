@@ -36,7 +36,7 @@ proc toPtrToCConstCharImpl(s: cstring): ptr CConst[cchar]
 
 {.pop.}
 
-template derefAsNonConst*[T](p: ptr CConst[T]): T = toPtrToNonConst(p)[]
+proc derefAsNonConst*[T](p: ptr CConst[T]): T {.inline, raises: [].} = toPtrToNonConst(p)[]
   ## This is **unsafe** as it dereferences a pointer.
   ##
   ## `[]` should not be used instead of this.
