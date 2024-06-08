@@ -27,4 +27,6 @@ doAssert p.derefAsNonConst() == 1
 
 + The type `CConst` cannot be normally instantiated or used as a parameter type or return type. Only the pointers can. Such as `ptr CConst[T]` (corresponding to C++ `const T*`), `ptr ptr CConst[T]` (`const T**`), `ptr CConst[ptr T]` (`T * const*`) and `ptr CConst[ptr CConst[T]]` (`const T * const*`); the outmost level must not be `CConst` (or `CConst[ptr]`).
 
++ This distinguishes between levels of constness (very strictly); between that of a pointer and of a pointee (for ensuring the most compatibility with C++). Basically, what wouldn't be allowed in C++ is not allowed. 
+
 + The recommend (though not required) version of the compiler to be used with this is 1.2.0 or later. The backend C++ compiler has to at least support C++11 or later.
